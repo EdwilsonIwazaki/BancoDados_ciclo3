@@ -11,10 +11,26 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-    Pedido.belongsTo(models.Cliente);
-    Pedido.belongsToMany(models.Servico,{
-      through: 'ItemPedido'
-    });
+
+      Pedido.belongsTo(models.Cliente);
+      Pedido.belongsToMany(models.Servico,{
+        through: 'ItemPedido'
+      });
+      // Pedido.hasMany(models.ItemPedido);
+  
+
+      // linha feito pelo professor na aula ao vivo
+    // Pedido.belongsTo(models.Cliente,{
+    //   foreignKey: 'ClienteId', as: 'cliente'
+    // });
+    // Pedido.belongsToMany(models.Servico,{
+    //   foreignKey: 'ServivoId',
+    //   through: 'ItemPedido', as: 'servicos_ped'
+    // });
+    // Pedido.hasMany(models.ItemPedido,{
+    //   foreignKey: 'PedidoId', as: 'item_pedido'
+    // });
+
     }
   };
   Pedido.init({
